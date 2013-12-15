@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.media.opengl.GLAutoDrawable;
 
-import br.com.etyllica.core.event.GUIAction;
+import br.com.etyllica.core.event.Action;
 import br.com.etyllica.core.event.GUIEvent;
 import br.com.etyllica.core.event.KeyEvent;
 import br.com.etyllica.core.event.PointerEvent;
@@ -23,7 +23,7 @@ import br.com.luvia.core.ApplicationGL;
 
 public class MainMenu extends ApplicationGL{
 
-	public MainMenu(int w, int h) {
+	public MainMenu(float w, float h) {
 		super(w,h);
 	}
 
@@ -46,7 +46,7 @@ public class MainMenu extends ApplicationGL{
 
 		Button play = new Button(w/2-200/2, 220, 200, 60);
 		play.setLabel(new MultiLangLabel(playTexts));
-		play.addAction(GUIEvent.MOUSE_LEFT_BUTTON_UP, new GUIAction(this, "playGameAction"));
+		play.addAction(GUIEvent.MOUSE_LEFT_BUTTON_UP, new Action(this, "playGameAction"));
 		add(play);
 
 		//Options Button
@@ -56,7 +56,7 @@ public class MainMenu extends ApplicationGL{
 
 		Button options = new Button(w/2-200/2, 320, 200, 60);
 		options.setLabel(new MultiLangLabel(optionsTexts));
-		options.addAction(GUIEvent.MOUSE_LEFT_BUTTON_UP, new GUIAction(this, "optionsAction"));
+		options.addAction(GUIEvent.MOUSE_LEFT_BUTTON_UP, new Action(this, "optionsAction"));
 		add(options);
 
 		//Exit Button

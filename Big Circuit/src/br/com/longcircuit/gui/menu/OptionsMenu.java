@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.media.opengl.GLAutoDrawable;
 
-import br.com.etyllica.core.event.GUIAction;
+import br.com.etyllica.core.event.Action;
 import br.com.etyllica.core.event.GUIEvent;
 import br.com.etyllica.core.event.KeyEvent;
 import br.com.etyllica.core.event.PointerEvent;
@@ -22,7 +22,7 @@ import br.com.luvia.core.ApplicationGL;
 
 public class OptionsMenu extends ApplicationGL{
 
-	public OptionsMenu(int w, int h) {
+	public OptionsMenu(float w, float h) {
 		super(w,h);
 	}
 	
@@ -62,7 +62,7 @@ public class OptionsMenu extends ApplicationGL{
 		
 		Button back = new Button(w/2-200/2, 220, 200, 60);
 		back.setLabel(new MultiLangLabel(playTexts));
-		back.addAction(GUIEvent.MOUSE_LEFT_BUTTON_UP, new GUIAction(this, "backMenuAction"));
+		back.addAction(GUIEvent.MOUSE_LEFT_BUTTON_UP, new Action(this, "backMenuAction"));
 		add(back);
 		
 		final ScheduledExecutorService loadSimulator = Executors.newSingleThreadScheduledExecutor();

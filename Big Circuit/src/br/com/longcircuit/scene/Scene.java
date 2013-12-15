@@ -11,8 +11,6 @@ import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 
-import org.lwjgl.util.vector.Vector3f;
-
 import br.com.etyllica.core.event.GUIEvent;
 import br.com.etyllica.core.event.PointerEvent;
 import br.com.etyllica.core.input.mouse.MouseButton;
@@ -21,6 +19,7 @@ import br.com.longcircuit.characters.npc.Npc;
 import br.com.longcircuit.characters.npc.Oracle;
 import br.com.longcircuit.itens.Battery;
 import br.com.longcircuit.itens.circuits.CircuitAND;
+import br.com.luvia.linear.Point3D;
 import br.com.luvia.loader.TextureLoader;
 
 import com.jogamp.opengl.util.texture.Texture;
@@ -37,14 +36,14 @@ public abstract class Scene extends GameScene {
 	private Battery battery;
 	private CircuitAND circuit;
 
-	protected int mx = 0;
-	protected int my = 0;
+	protected float mx = 0;
+	protected float my = 0;
 
 	//TODO Put in server
 	//NPC
 	//private Oracle oracle;
 
-	public Scene(int w, int h) {
+	public Scene(float w, float h) {
 		super(w, h);
 	}
 
@@ -227,7 +226,7 @@ public abstract class Scene extends GameScene {
 		//Draw Gui
 		g.setColor(Color.WHITE);
 		//g.escreveSombra(20,20, "Scene",Color.BLACK);
-		g.escreve(20,20,"Scene");
+		g.write(20,20,"Scene");
 		//System.out.println("w = "+w);
 		//System.out.println("h = "+h);
 		//g.drawLine(w/2, h/2, w/2+mx, h/2+my);
@@ -251,66 +250,22 @@ public abstract class Scene extends GameScene {
 
 	}
 
-	protected void getMousePosition(GL2 gl, int mx, int my) {
+	protected void getMousePosition(GL2 gl, float mx, float my) {
 
-		final int X = 0;
-		final int Z = 2;
+		Point3D p = get3DPointerFromMouse(gl, mx, my);
 
-		double[] p = get3DPointerFromMouse(gl, mx, my);
-
-		drawCross(gl, p[X], 0, p[Z]);
+		drawCross(gl, p.getX(), p.getY(), p.getZ());
 
 	}
 
 	//TODO Remove
-	protected void getMousePositionAndTrata(GL2 gl, int mx, int my) {
+	protected void getMousePositionAndTrata(GL2 gl, float mx, float my) {
 
-		final int X = 0;
-		final int Z = 2;
+		Point3D p = get3DPointerFromMouse(gl, mx, my);
 
-		double[] p = get3DPointerFromMouse(gl, mx, my);
-
-		trataMouse(gl, p[X], p[Z]);
-	}
-
-	private double[] get3DPointerFromMouse(GL2 gl, int mx, int my){
-
-		double[] pointer = new double[3];
-
-		final int X = 0;
-		final int Y = 1;
-		final int Z = 2;
-
-		int[] viewport = getViewPort(gl);
-		double[] modelview = getModelView(gl);
-		double[] projection = getProjection(gl);
-
-		//World near Coordinates
-		double wncoord[] = new double[4];
-
-		//World far Coordinates
-		double wfcoord[] = new double[4];
-
-		glu.gluUnProject((double) mx, (double) my, 0.0, modelview, 0, projection, 0, viewport, 0, wncoord, 0);
-		Vector3f v1 = new Vector3f ((float)wncoord[X], (float)wncoord[Y], (float)wncoord[Z] );
-
-		glu.gluUnProject((double) mx, (double) my, 1.0, modelview, 0, projection, 0, viewport, 0, wfcoord, 0);
-		Vector3f v2 = new Vector3f ((float)wfcoord[X], (float)wfcoord[Y], (float)wfcoord[Z] );
-
-		float t = (v1.getY() - 0) / (v1.getY() - v2.getY());  // - 0 Since our Z == 0.. For easier editing later
-
-		// so here are the desired (x, y) coordinates
-		float fX = v1.getX() + (v2.getX() - v1.getX()) * t;
-		float fZ = v1.getZ() + (v2.getZ() - v1.getZ()) * t;
-
-		pointer[X] = fX;
-		pointer[Y] = 0;
-		pointer[Z] = fZ;
-
-		return pointer;
+		trataMouse(gl, p.getX(), p.getZ());
 
 	}
-
 
 	private void drawCross(GL2 gl, double wx, double wy, double wz){
 
@@ -406,7 +361,7 @@ public abstract class Scene extends GameScene {
 
 		GL2 gl = drawable.getGL().getGL2();
 
-		gl.glViewport (x, y, w, h);
+		gl.glViewport ((int)x, (int)y, (int)w, (int)h);
 
 		gl.glMatrixMode(GL2.GL_PROJECTION);
 

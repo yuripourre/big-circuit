@@ -13,7 +13,7 @@ import br.com.etyllica.core.event.KeyEvent;
 
 public class BigCircuit extends Scene {
 
-	public BigCircuit(int w, int h) {
+	public BigCircuit(float w, float h) {
 		super(w, h);
 	}
 	
@@ -149,7 +149,7 @@ public class BigCircuit extends Scene {
 		//Transform by Camera
 		lookCamera(drawable.getGL().getGL2());		
 				
-		getMousePosition(gl,mx,h-my);
+		getMousePosition(gl,mx,h-20-my);
 		
 		if(click){
 

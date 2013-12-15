@@ -1,4 +1,3 @@
-import br.com.longcircuit.gui.menu.MainMenu;
 import br.com.longcircuit.scene.BigCircuit;
 import br.com.luvia.Luvia;
 

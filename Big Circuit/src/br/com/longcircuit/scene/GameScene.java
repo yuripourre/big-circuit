@@ -3,7 +3,6 @@ package br.com.longcircuit.scene;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 
 import br.com.longcircuit.characters.Player;
@@ -43,7 +42,7 @@ public abstract class GameScene extends ApplicationGL{
 	protected Animation animation;
 
 
-	public GameScene(int w, int h) {
+	public GameScene(float w, float h) {
 		super(w, h);
 
 		gui = new DefaultGui();
@@ -149,45 +148,6 @@ public abstract class GameScene extends ApplicationGL{
 
 		player.getNamePosition().setX(pos[X]);
 		player.getNamePosition().setY(h-pos[Y]+34);
-	}
-
-	protected int[] getViewPort(GL2 gl){
-
-		int viewport[] = new int[4];
-		gl.glGetIntegerv(GL.GL_VIEWPORT, viewport, 0);
-
-		return viewport;
-	}
-
-	protected double[] getModelView(GL2 gl){
-
-		double modelView[] = new double[16];
-		gl.glGetDoublev(GL2.GL_MODELVIEW_MATRIX, modelView, 0);
-
-		return modelView;
-	}
-
-	protected double[] getProjection(GL2 gl){
-
-		double projection[] = new double[16];
-
-		gl.glGetDoublev(GL2.GL_PROJECTION_MATRIX, projection, 0);
-
-		return projection;
-	}
-
-	protected double[] get2DPositionFromPoint(GL2 gl, double px, double py, double pz){
-
-		double[] position = new double[3];
-
-		int[] viewport = getViewPort(gl);
-		double[] modelview = getModelView(gl);
-		double[] projection = getProjection(gl);
-
-		glu.gluProject(px, py, pz, modelview, 0, projection, 0, viewport, 0, position, 0);
-
-		return position;
-
 	}
 
 }

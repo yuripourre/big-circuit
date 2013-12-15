@@ -21,7 +21,7 @@ public class Player extends Object3D implements Drawable{
 		
 		//System.out.println("draw "+name+" "+namePosition.getX()+","+namePosition.getY());
 		
-		g.escreve((int)Math.abs(namePosition.getX()), (int)Math.abs(namePosition.getY()), name);
+		g.write((int)Math.abs(namePosition.getX()), (int)Math.abs(namePosition.getY()), name);
 	}
 
 	public Point3D getNamePosition() {
