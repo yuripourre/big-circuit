@@ -23,7 +23,7 @@ import br.com.luvia.core.ApplicationGL;
 
 public class MainMenu extends ApplicationGL{
 
-	public MainMenu(float w, float h) {
+	public MainMenu(int w, int h) {
 		super(w,h);
 	}
 

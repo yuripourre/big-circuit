@@ -42,7 +42,7 @@ public abstract class GameScene extends ApplicationGL{
 	protected Animation animation;
 
 
-	public GameScene(float w, float h) {
+	public GameScene(int w, int h) {
 		super(w, h);
 
 		gui = new DefaultGui();

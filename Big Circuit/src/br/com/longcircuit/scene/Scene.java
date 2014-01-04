@@ -43,7 +43,7 @@ public abstract class Scene extends GameScene {
 	//NPC
 	//private Oracle oracle;
 
-	public Scene(float w, float h) {
+	public Scene(int w, int h) {
 		super(w, h);
 	}
 
@@ -242,12 +242,6 @@ public abstract class Scene extends GameScene {
 		for(Npc npc: npcs){
 			npc.draw(g);
 		}
-	}
-
-	@Override
-	public void timeUpdate() {
-		// TODO Auto-generated method stub
-
 	}
 
 	protected void getMousePosition(GL2 gl, float mx, float my) {

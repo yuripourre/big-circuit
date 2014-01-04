@@ -22,7 +22,7 @@ import br.com.luvia.core.ApplicationGL;
 
 public class OptionsMenu extends ApplicationGL{
 
-	public OptionsMenu(float w, float h) {
+	public OptionsMenu(int w, int h) {
 		super(w,h);
 	}
 	

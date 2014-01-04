@@ -13,7 +13,7 @@ import br.com.etyllica.core.event.KeyEvent;
 
 public class BigCircuit extends Scene {
 
-	public BigCircuit(float w, float h) {
+	public BigCircuit(int w, int h) {
 		super(w, h);
 	}
 	
