@@ -20,7 +20,7 @@ import br.com.luvia.core.ApplicationGL;
 import br.com.luvia.linear.Modelo3D;
 import br.com.luvia.util.Camera;
 
-public abstract class GameScene extends ApplicationGL{
+public abstract class GameScene extends ApplicationGL {
 
 	protected List<Npc> npcs = new ArrayList<Npc>();
 

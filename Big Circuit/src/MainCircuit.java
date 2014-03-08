@@ -1,8 +1,10 @@
+import br.com.etyllica.context.Application;
 import br.com.longcircuit.scene.BigCircuit;
 import br.com.luvia.Luvia;
+import br.com.luvia.core.ApplicationGL;
 
 
-public class MainCircuit extends Luvia{
+public class MainCircuit extends Luvia {
 
 	public MainCircuit(int w, int h) {
 		super(w, h);
@@ -17,7 +19,7 @@ public class MainCircuit extends Luvia{
 	}
 	
 	@Override
-	public void startGame(){
+	public ApplicationGL startApplication() {
 
 		/** Mystic **/
 		//setMainApplication(new MysticLogin(w, h));
@@ -30,7 +32,7 @@ public class MainCircuit extends Luvia{
 		
 		//setMainApplication(new MechAnimation(w, h));
 		
-		setMainApplication(new BigCircuit(w, h));
+		return new BigCircuit(w, h);
 		
 		//setMainApplication(new MainMenu(w, h));
 		
